@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         }
         Vector2 newVelocityRobot = new Vector2(horizontalMovementRobot * moveSpeed, rbRobot.linearVelocity.y);
         rbRobot.linearVelocity = newVelocityRobot;
-        Gravity();
+        //Gravity();
         //if (Mouse.current.leftButton.wasPressedThisFrame)
         //{
         //    rb.position = Mouse.current.position.ReadValue();
@@ -102,7 +102,8 @@ public class PlayerMovement : MonoBehaviour
             
             if (isGrounded())
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                rb.AddForce(transform.up * jumpPower, ForceMode2D.Impulse);
                 //    if (context.performed)
                 //    {
                 //        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
