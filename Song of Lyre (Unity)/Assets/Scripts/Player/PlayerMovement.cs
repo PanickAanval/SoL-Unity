@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
@@ -41,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Active")]
     public bool active = true;
     public bool activeRobot = false;
+    public UnityEvent swapToRobot;
+    public UnityEvent swapToLyre;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -150,6 +153,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Swap(InputAction.CallbackContext context)
     {
+        if (active == true)
+        {
+            swapToRobot.Invoke();
+        }
+        if (activeRobot == true)
+        {
+            swapToLyre.Invoke();
+        }
         active = !active;
         activeRobot = !activeRobot;
     }
