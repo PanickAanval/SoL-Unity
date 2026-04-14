@@ -7,6 +7,7 @@ namespace SOL
 {
     public class PortraitPresenter : DialoguePresenterBase
     {
+        [SerializeField] private Sprite portraitEmpty;
         [SerializeField] private Image portraitLeft;
         [SerializeField] private Image portraitRight;
         [SerializeField] private DialogueCharacterStruct[] charList;
@@ -34,7 +35,7 @@ namespace SOL
                 if (charName == c.name)
                 {
                     Image image = checkPortrait(c.sprite);
-                    if (image != null)
+                    if (image != null || image != portraitEmpty)
                     {
                         image.sprite = c.sprite;
                     }
@@ -52,11 +53,11 @@ namespace SOL
             {
                 return null;
             }
-            else if (portraitLeft.sprite == null)
+            else if (portraitLeft.sprite == null || portraitLeft.sprite == portraitEmpty)
             {
                 return portraitLeft;
             }
-            else if (portraitRight.sprite == null)
+            else if (portraitRight.sprite == null || portraitRight.sprite == portraitEmpty)
             {
                 return portraitRight;
             }
