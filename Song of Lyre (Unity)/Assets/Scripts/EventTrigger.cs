@@ -1,26 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
 public class EventTrigger : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public UnityEvent Event;
-    void Start()
+    public UnityEvent onEnter, onExit;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        onEnter.Invoke();
     }
 
-    void OnTriggerEnter()
+    private void OnTriggerExit(Collider other)
     {
-        Event.Invoke();
-    }
-
-    public void Werk()
-    {
-        print("Werkt");
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        onExit.Invoke();
     }
 }
