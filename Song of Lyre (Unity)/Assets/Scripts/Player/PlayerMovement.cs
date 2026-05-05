@@ -9,7 +9,7 @@ using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    private Animator animator;
     public Rigidbody2D rb;
     public Rigidbody2D rbRobot;
     [Header("Movement")]
@@ -47,12 +47,13 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //animator.SetFloat("Speed", 2);
         dashDir = horizontalMovement;
         if (!isDashing)
         {
@@ -87,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
         if (active)
         {
             horizontalMovement = context.ReadValue<Vector2>().x;
+            
         }
     }
 
