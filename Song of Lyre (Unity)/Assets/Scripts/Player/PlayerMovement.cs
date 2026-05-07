@@ -9,6 +9,7 @@ using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject LyreAnimator;
     private Animator animator;
     public Rigidbody2D rb;
     public Rigidbody2D rbRobot;
@@ -47,12 +48,20 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = LyreAnimator.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (rb.linearVelocityX != 0)
+        {
+            ifMoving();
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
+        }
         //animator.SetFloat("Speed", 2);
         dashDir = horizontalMovement;
         if (!isDashing)
@@ -88,8 +97,8 @@ public class PlayerMovement : MonoBehaviour
         if (active)
         {
             horizontalMovement = context.ReadValue<Vector2>().x;
-            
-        }
+            //animator.SetTrigger("Moving");
+        } 
     }
 
     public void Move_Robot(InputAction.CallbackContext context)
@@ -121,8 +130,24 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    public void ifMoving()
+    {
+        if (active)
+        {
+            animator.SetBool("Moving", true);
 
-    public void Dash(InputAction.CallbackContext context)
+            if (rb.linearVelocityX < 0)
+            {
+                //LyreAnimator.GetComponent<Transform>().localScale.z = LyreAnimator.GetComponent<Transform>().localScale.z * -1;
+                LyreAnimator.GetComponent<Transform>().localScale = new Vector3(1, 1, -1);
+            }
+            else
+            {
+                LyreAnimator.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
+            }
+        }
+    }
+        public void Dash(InputAction.CallbackContext context)
     {
         if (active && canDash && !isDashing)
         {
