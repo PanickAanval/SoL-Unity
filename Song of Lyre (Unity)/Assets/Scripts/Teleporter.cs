@@ -1,0 +1,23 @@
+using UnityEngine;
+
+public class Teleporter : MonoBehaviour
+{
+    public GameObject player;
+    public GameObject teleporter;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void Teleport()
+    {
+        player.transform.position = teleporter.transform.position;
+    }
+}

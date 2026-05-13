@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpPower = 10f;
 
     [Header("GroundCheck")]
+
     public Transform groundCheckPos;
     public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
@@ -193,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private bool isGrounded()
     {
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && Physics2D.OverlapCircle(groundCheckPos.position, 10, groundLayer, 0))
         {
             canDash = true;
             return true;
