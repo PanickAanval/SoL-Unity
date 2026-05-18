@@ -9,6 +9,7 @@ using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool notDialogue = true;
     public GameObject LyreAnimator;
     private Animator animator;
     public Rigidbody2D rb;
@@ -112,22 +113,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (active)
+        if (notDialogue)
         {
-            
-            if (isGrounded())
+            if (active)
             {
-                //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-                rb.AddForce(transform.up * jumpPower, ForceMode2D.Impulse);
-                //    if (context.performed)
-                //    {
-                //        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-                //    }
-                //}
 
-                //else if (context.canceled)
-                //{
-                //    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.8f);
+                if (isGrounded())
+                {
+                    //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                    rb.AddForce(transform.up * jumpPower, ForceMode2D.Impulse);
+                    //    if (context.performed)
+                    //    {
+                    //        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
+                    //    }
+                    //}
+
+                    //else if (context.canceled)
+                    //{
+                    //    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.8f);
+                }
             }
         }
     }
@@ -202,6 +206,10 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
+    public void isInDialogue()
+    {
+        notDialogue =! notDialogue;
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
