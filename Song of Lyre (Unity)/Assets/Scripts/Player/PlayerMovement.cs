@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rbRobot;
     [Header("Movement")]
     public float moveSpeed = 5f;
+    public bool isWalking = false;
 
     float horizontalMovement;
     float horizontalMovementRobot;
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("GroundCheck")]
 
     public Transform groundCheckPos;
-    public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
+    public Vector2 groundCheckSize = new Vector2(2f, 2f);
     public LayerMask groundLayer;
 
     [Header("Gravity")]
@@ -56,6 +57,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if (animator.GetBool("Walking") == true)
+        {
+            moveSpeed = 10f;
+        }
+        else
+        {
+            moveSpeed = 30f;
+        }
         if (rb.linearVelocityX != 0)
         {
             ifMoving();
@@ -80,6 +90,14 @@ public class PlayerMovement : MonoBehaviour
         //}
     }
 
+    public void Walky()
+    {
+        animator.SetBool("Walking", true);
+    }
+    public void NoWalky()
+    {
+        animator.SetBool("Walking", false);
+    }
     private void Gravity()
     {
         if (isDashing) return;
@@ -196,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
         active = !active;
         activeRobot = !activeRobot;
     }
-    private bool isGrounded()
+    public bool isGrounded()
     {
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && Physics2D.OverlapCircle(groundCheckPos.position, 10, groundLayer, 0))
         {
