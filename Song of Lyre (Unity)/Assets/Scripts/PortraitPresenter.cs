@@ -53,13 +53,13 @@ namespace SOL
             {
                 return null;
             }
-            else if (portraitLeft.sprite == null || portraitLeft.sprite == portraitEmpty)
-            {
-                return portraitLeft;
-            }
             else if (portraitRight.sprite == null || portraitRight.sprite == portraitEmpty)
             {
                 return portraitRight;
+            }
+            else if (portraitLeft.sprite == null || portraitLeft.sprite == portraitEmpty)
+            {
+                return portraitLeft;
             }
             else
             {
