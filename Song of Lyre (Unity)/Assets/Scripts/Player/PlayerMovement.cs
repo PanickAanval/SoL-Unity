@@ -228,6 +228,22 @@ public class PlayerMovement : MonoBehaviour
     {
         notDialogue =! notDialogue;
     }
+
+    public void forceNonJumpable()
+    {
+        if (notDialogue == true)
+        {
+            notDialogue = false;
+        }
+    }
+    public void forceJumpable()
+    {
+        if (notDialogue == false)
+        {
+            notDialogue = true;
+        } 
+            
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;

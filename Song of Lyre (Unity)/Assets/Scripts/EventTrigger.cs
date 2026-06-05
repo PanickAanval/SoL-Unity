@@ -9,15 +9,21 @@ using Yarn.Unity;
 public class EventTrigger : MonoBehaviour
 {
     public UnityEvent onEnter, onExit;
-
+    public GameObject player;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        onEnter.Invoke();
+        if (collision.gameObject == player)
+        {
+            onEnter.Invoke();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        onExit.Invoke();
+        if (collision.gameObject == player)
+        {
+            onExit.Invoke();
+        }
     }
 }
