@@ -16,8 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rbRobot;
     [Header("Movement")]
     public float moveSpeed = 5f;
+    public float moveSpeedRobot = 50f;
     public bool isWalking = false;
-
+    public bool canSwitch = false;
     float horizontalMovement;
     float horizontalMovementRobot;
 
@@ -81,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 newVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
             rb.linearVelocity = newVelocity;
         }
-        Vector2 newVelocityRobot = new Vector2(horizontalMovementRobot * moveSpeed, rbRobot.linearVelocity.y);
+        Vector2 newVelocityRobot = new Vector2(horizontalMovementRobot * moveSpeedRobot, rbRobot.linearVelocity.y);
         rbRobot.linearVelocity = newVelocityRobot;
         //Gravity();
         //if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -202,17 +203,19 @@ public class PlayerMovement : MonoBehaviour
     //}
 
     public void Swap(InputAction.CallbackContext context)
-    {
-        if (active == true)
+    { if (canSwitch == true)
         {
-            swapToRobot.Invoke();
+            if (active == true)
+            {
+                swapToRobot.Invoke();
+            }
+            if (activeRobot == true)
+            {
+                swapToLyre.Invoke();
+            }
+            active = !active;
+            activeRobot = !activeRobot;
         }
-        if (activeRobot == true)
-        {
-            swapToLyre.Invoke();
-        }
-        active = !active;
-        activeRobot = !activeRobot;
     }
     public bool isGrounded()
     {
@@ -243,6 +246,11 @@ public class PlayerMovement : MonoBehaviour
             notDialogue = true;
         } 
             
+    }
+
+    public void makeSwitchable()
+    {
+        canSwitch = true;
     }
     private void OnDrawGizmosSelected()
     {
