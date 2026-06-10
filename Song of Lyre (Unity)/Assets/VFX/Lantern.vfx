@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: Torch
+  m_Name: Lantern
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -93,7 +93,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Torch
+  m_Name: Lantern
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -2320,7 +2320,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.26274511218070986,"g":0.004427462816238403,"b":0.0,"a":1.0},"time":0.06863508373498917},{"color":{"r":1.1568379402160645,"g":0.18823635578155518,"b":0.0,"a":1.0},"time":0.32156863808631899},{"color":{"r":1.8616350889205933,"g":0.9719157814979553,"b":0.0,"a":1.0},"time":0.5764706134796143},{"color":{"r":1.4224780797958375,"g":1.4224780797958375,"b":1.4224780797958375,"a":1.0},"time":0.6176546812057495}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.0470588244497776},{"alpha":0.9411764740943909,"time":0.3607843220233917},{"alpha":0.07058823853731156,"time":0.6235294342041016},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.007106257602572441,"b":0.26274511218070986,"a":1.0},"time":0.06863508373498917},{"color":{"r":0.0,"g":0.35131344199180605,"b":1.1568379402160645,"a":1.0},"time":0.32156863808631899},{"color":{"r":0.0,"g":1.0188610553741456,"b":1.8616350889205933,"a":1.0},"time":0.5764706134796143},{"color":{"r":1.4224780797958375,"g":1.4224780797958375,"b":1.4224780797958375,"a":1.0},"time":0.6176546812057495}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.0470588244497776},{"alpha":0.9411764740943909,"time":0.3607843220233917},{"alpha":0.07058823853731156,"time":0.6235294342041016},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: -1
   m_Property:
     name: 
@@ -2520,7 +2520,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.5
+      m_SerializableObject: 1
     m_Space: -1
   m_Property:
     name: _Size
