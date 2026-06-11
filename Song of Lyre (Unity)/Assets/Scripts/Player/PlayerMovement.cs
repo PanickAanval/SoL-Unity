@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
@@ -217,6 +218,14 @@ public class PlayerMovement : MonoBehaviour
             activeRobot = !activeRobot;
         }
     }
+
+    public void ResetS(InputAction.CallbackContext context)
+    {
+        Debug.Log("currentSceneName");
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        Debug.Log(currentSceneName);
+        SceneManager.LoadScene(currentSceneName);
+    }
     public bool isGrounded()
     {
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) && Physics2D.OverlapCircle(groundCheckPos.position, 10, groundLayer, 0))
@@ -250,7 +259,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void makeSwitchable()
     {
-        canSwitch = true;
+        canSwitch =! canSwitch;
     }
     private void OnDrawGizmosSelected()
     {

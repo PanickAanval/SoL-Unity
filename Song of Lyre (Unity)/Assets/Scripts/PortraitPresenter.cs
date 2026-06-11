@@ -35,7 +35,7 @@ namespace SOL
                 if (charName == c.name)
                 {
                     Image image = checkPortrait(c.sprite);
-                    if (image != null || image != portraitEmpty)
+                    if (image != null /*|| image != portraitEmpty*/)
                     {
                         image.sprite = c.sprite;
                     }
